@@ -31,7 +31,7 @@ public class Calcs {
 	// The mass of a standard frisbee in kilograms.
 	private static final double RHO = 1.23;
 	// The density of air in kg/m^3.
-	private static final double AREA = 0.0568;
+	private static final double AREA = 0.061311;
 	// The area of a standard frisbee.
 	private static final double CL0 = 0.1;
 	// The lift coefficient at alpha = 0.
