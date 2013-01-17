@@ -15,8 +15,8 @@ import java.io.PrintWriter;
 public class Calcs {
 
 	public ArrayList<Double> X, Y;
-	private int k;
-	private static double[][] points;
+	//private int k;
+	//private static double[][] points;
 	private static double x;
 	// The x position of the frisbee.
 	private static double y;
@@ -27,7 +27,7 @@ public class Calcs {
 	// The y velocity of the frisbee.
 	private static final double g = -9.81;
 	// The acceleration of gravity (m/s^2).
-	private static final double m = 0.175;
+	private static final double m = 0.180;
 	// The mass of a standard frisbee in kilograms.
 	private static final double RHO = 1.23;
 	// The density of air in kg/m^3.
@@ -56,6 +56,7 @@ public class Calcs {
 	}
 
 	public void simulate(double velocity, double theta) {
+		velocity = velocity * 6 * 2.54 * Math.PI / (60*100);
 		double y0 = .5;
 		double vx0 = velocity * Math.cos(theta*Math.PI/180);
 		double vy0 = velocity * Math.sin(theta*(Math.PI)/180);
@@ -81,8 +82,8 @@ public class Calcs {
 					"frisbee.csv")));
 
 			// A loop index to monitor the simulation steps.
-			k = 0;
-			points = new double[1000][2];
+			//k = 0;
+			//points = new double[1000][2];
 
 			// A while loop that performs iterations until the y position
 			// reaches zero (i.e. the frisbee hits the ground).
@@ -114,7 +115,7 @@ public class Calcs {
 				X.add(x);
 				Y.add(y);
 
-				k++;
+				//k++;
 			}
 			pw.close();
 		} catch (Exception e) {
