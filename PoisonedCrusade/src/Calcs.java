@@ -15,8 +15,8 @@ import java.io.PrintWriter;
 public class Calcs {
 
 	public ArrayList<Double> X, Y;
-	//private int k;
-	//private static double[][] points;
+	// private int k;
+	// private static double[][] points;
 	private static double x;
 	// The x position of the frisbee.
 	private static double y;
@@ -44,11 +44,11 @@ public class Calcs {
 	private static final double ALPHA0 = -4;
 
 	public Calcs() {
-		
+
 		// double (y0, vx0, vy0, angle, deltaT)
 		double velocity = 500;
 		double theta = 30;
-		
+
 		simulate(velocity, theta);
 		X = new ArrayList<Double>();
 		Y = new ArrayList<Double>();
@@ -56,12 +56,12 @@ public class Calcs {
 	}
 
 	public void simulate(double velocity, double theta) {
-		velocity = velocity * 6 * 2.54 * Math.PI / (60*100);
-		double y0 = .5;
-		double vx0 = velocity * Math.cos(theta*Math.PI/180);
-		double vy0 = velocity * Math.sin(theta*(Math.PI)/180);
+		velocity = velocity * 6 * 2.54 * Math.PI / (2 * 60 * 100);
+		double y0 = .3302;
+		double vx0 = velocity * Math.cos(theta * Math.PI / 180);
+		double vy0 = velocity * Math.sin(theta * (Math.PI) / 180);
 		double alpha = theta;
-		double deltaT = .01;
+		double deltaT = .005;
 		// Calculation of the lift coefficient using the relationship given
 		// by S. A. Hummel.
 		double cl = CL0 + CLA * alpha * Math.PI / 180;
@@ -82,8 +82,8 @@ public class Calcs {
 					"frisbee.csv")));
 
 			// A loop index to monitor the simulation steps.
-			//k = 0;
-			//points = new double[1000][2];
+			// k = 0;
+			// points = new double[1000][2];
 
 			// A while loop that performs iterations until the y position
 			// reaches zero (i.e. the frisbee hits the ground).
@@ -104,9 +104,6 @@ public class Calcs {
 				vy = vy + deltavy;
 				x = x + vx * deltaT;
 				y = y + vy * deltaT;
-				// Only the output from every tenth iteration will be sent
-				// to the spreadsheet so as to decrease the number of data
-				// points.
 
 				pw.print(x + "," + y + "," + vx + "," + vy + ","
 						+ Math.pow(Math.pow(vx, 2) + Math.pow(vy, 2), .5));
@@ -115,7 +112,7 @@ public class Calcs {
 				X.add(x);
 				Y.add(y);
 
-				//k++;
+				// k++;
 			}
 			pw.close();
 		} catch (Exception e) {
